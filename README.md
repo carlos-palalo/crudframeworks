@@ -20,7 +20,7 @@ En nuestro caso:
 ### Paso 3
 En el directorio donde este el proyecto, puede ejecutar la siguiene instruccion para poder ejecutar el proyecto:
 
-#### npm start
+> > #### npm start
 
 ### Finalmente
 Si todo va bien se ejecutara y se abrira una ventana en el navegador en la siguiene direccion  http: // localhost: 3000, en la cual aparecera  un listado dentro de una tabla de todos los frameworks que estan en la BD. 
