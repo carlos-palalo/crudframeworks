@@ -205,7 +205,7 @@ function App() {
         </div>
       </ModalBody>
       <ModalFooter>
-        <button className="btn btn-primary" onClick={()=>peticionPut()}>Editar</button>{"   "}
+        <button className="btn btn-primary" onClick={()=>peticionPut()}>Modificar</button>{"   "}
         <button className="btn btn-danger" onClick={()=>abrirCerrarModalEditar()}>Cancelar</button>
       </ModalFooter>
     </Modal>
