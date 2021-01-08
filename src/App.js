@@ -60,31 +60,39 @@ function App() {
       //cerramos la ventana modal
       abrirCerrarModalInsertar();
       //refresco la tabla haciendo una peticion get
-      this.peticionGet();
-      //refresco la tabla haciendo una peticion get
+      peticionGet();
+      
     }).catch(error=>{
       console.log(error);
     })
   }
 
   const peticionPut=async()=>{
-    var f = new FormData();
-    f.append("nombre", frameworkSeleccionado.nombre);
-    f.append("lanzamiento", frameworkSeleccionado.lanzamiento);
-    f.append("desarrollador", frameworkSeleccionado.desarrollador);
-    f.append("METHOD", "PUT");
-    await axios.put(baseUrl, f, {params: {id: frameworkSeleccionado.id}})
+    
+    //console.log(frameworkSeleccionado);
+   
+     // Codificar nuestro framework como JSON
+    const frameworkJSON = JSON.stringify(frameworkSeleccionado);
+        // ¡Y enviarlo!
+       
+    await axios.put(baseUrl, frameworkJSON, {params: {id: frameworkSeleccionado.id}})
     .then(response=>{
       var dataNueva= data;
+      //lo siguiente es un bucle que recorre toda la tabla para encontrar el elemento
+      //seleccionado por el id
       dataNueva.map(framework=>{
+        //console.log(framework.id);
         if(framework.id===frameworkSeleccionado.id){
           framework.nombre=frameworkSeleccionado.nombre;
           framework.lanzamiento=frameworkSeleccionado.lanzamiento;
           framework.desarrollador=frameworkSeleccionado.desarrollador;
         }
       });
+      console.log(dataNueva);
       setData(dataNueva);
       abrirCerrarModalEditar();
+      //refresco la tabla haciendo una peticion put
+      peticionGet();
     }).catch(error=>{
       console.log(error);
     })
@@ -92,15 +100,12 @@ function App() {
 
   const peticionDelete=async()=>{
 
-   /* axios.delete(url+this.state.form.id).then(response=>{
-      this.setState({modalEliminar: false});
-      this.peticionGet();
-    })*/
    
-    console.log("estoy en delete");
     axios.delete(baseUrl,  {params: {id: frameworkSeleccionado.id}}).then(response=>{
-      console.log("estoy en delete");
-      this.abrirCerrarModalEliminar();
+   
+    abrirCerrarModalEliminar();
+       //refresco la tabla haciendo una peticion delete
+       peticionGet();
      
     }).catch(error=>{
       console.log(error);
