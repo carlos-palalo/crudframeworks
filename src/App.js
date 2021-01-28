@@ -1,3 +1,4 @@
+// importamos useState, el hook para crear un state en nuestro componente
 import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
@@ -7,6 +8,21 @@ import axios from 'axios';
 function App() {
   //direccion de la API
   const baseUrl="http://localhost:5000/apiPhpFrameworks/";
+
+  // useState recibe un parámetro: el valor inicial del estado (que será 0)
+  // y devuelve un array de dos posiciones:
+  //  la primera (count), tiene el valor del estado
+  //  la segunda (setCount), el método para actualizar el estado
+  //ejemplo        const [count, setCount] = useState(0)
+
+  {/*<div>
+      <p>Has hecho click {count} veces</p>
+      // actualizamos el state al hacer click con setCount //
+      <button onClick={() => setCount(count + 1)}>
+        Haz click!
+      </button>
+    </div>*/}
+
   const [data, setData]=useState([]);
   const [modalInsertar, setModalInsertar]= useState(false);
   const [modalEditar, setModalEditar]= useState(false);
