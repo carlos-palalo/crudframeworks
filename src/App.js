@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function App() {
   //direccion de la API
-  const baseUrl="http://localhost:5000/apiPhpFrameworks/";
+  const baseUrl="http://localhost/apiPhpFrameworks/";
 
   // useState recibe un parámetro: el valor inicial del estado (que será 0)
   // y devuelve un array de dos posiciones:
